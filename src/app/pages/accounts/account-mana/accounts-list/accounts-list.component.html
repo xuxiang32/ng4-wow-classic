@@ -4,7 +4,39 @@
     <nz-breadcrumb-item>账号列表</nz-breadcrumb-item>
   </nz-breadcrumb>
   <nz-content style="background:#fff; padding: 24px; flex: 1;">
-    账号列表
+    <div class="btn-container clearfix">
+      <a class="fr" routerLink="/accounts/account-mana/accounts-add" nz-button nzType="primary">添加账号</a>
+    </div>
+    <div class="mt15">
+      <nz-table #basicTable [nzData]="data">
+        <thead>
+        <tr>
+          <th>id</th>
+          <th>用户名称</th>
+          <th>加入日期</th>
+          <th>上次登录IP</th>
+          <th>上次登录时间</th>
+          <th>客户端语言</th>
+          <th>系统</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td>{{data.id}}</td>
+          <td>{{data.username}}</td>
+          <td>{{data.joindate ? (data.joindate | date:'yyyy-MM-dd HH:mm:ss') : ''}}</td>
+          <td>{{data.last_ip}}</td>
+          <td>{{data.last_login !== '0000-00-00 00:00:00' ? (data.last_login | date:'yyyy-MM-dd HH:mm:ss') : ''}}</td>
+          <td>{{data.locale === 4 ? '简体中文' : '其他'}}</td>
+          <td>{{data.os}}</td>
+          <td>
+            <button nzSize="small" nz-button nzGhost="true" nzType="primary">编辑</button>
+          </td>
+        </tr>
+        </tbody>
+      </nz-table>
+    </div>
   </nz-content>
 </div>
 

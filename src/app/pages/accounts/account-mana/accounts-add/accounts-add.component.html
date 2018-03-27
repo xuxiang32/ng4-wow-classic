@@ -1,0 +1,44 @@
+<div class="app-home">
+  <nz-breadcrumb style="margin:12px 0;">
+    <nz-breadcrumb-item>账号管理</nz-breadcrumb-item>
+    <nz-breadcrumb-item>账号列表</nz-breadcrumb-item>
+    <nz-breadcrumb-item>账号添加</nz-breadcrumb-item>
+  </nz-breadcrumb>
+  <nz-content style="background:#fff; padding: 24px; flex: 1;">
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="username">用户名</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="username" id="username">
+          <nz-form-explain *ngIf="validateForm.get('username').dirty && validateForm.get('username').errors">请输入正确的用户名</nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>密码</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input type="password" id="password" formControlName="password" (ngModelChange)="updateConfirmValidator()">
+          <nz-form-explain *ngIf="validateForm.get('password').dirty && validateForm.get('password').errors">请输入密码！</nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired>再次确认密码</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input type="password" formControlName="checkPassword" id="checkPassword">
+          <nz-form-explain *ngIf="validateForm.get('checkPassword').dirty && validateForm.get('checkPassword').errors">
+            <ng-container *ngIf="validateForm.get('checkPassword').hasError('required')">
+              再次输入密码！
+            </ng-container>
+            <ng-container *ngIf="validateForm.get('checkPassword').hasError('confirm')">
+              两次密码不一样!
+            </ng-container>
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item nz-row style="margin-bottom:8px;">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+          <button nz-button nzType="primary">注册</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </nz-content>
+</div>
