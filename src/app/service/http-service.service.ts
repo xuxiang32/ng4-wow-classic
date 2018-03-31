@@ -36,7 +36,6 @@ export class HttpServiceService {
       _that.httpClient.post(url, body, {
         headers: header
       }).subscribe((res: any) => {
-        console.log(res.header);
         if (res.header && res.header.code === 20000) {
           resolve(res);
         } else {
@@ -50,7 +49,9 @@ export class HttpServiceService {
           errHandler(error.header, error.body);
           reject('内部接口错误');
         } else {
-          alert('出错了');
+          _that.nzModalService.error({
+            nzTitle: error.header.message
+          });
           reject('内部接口错误');
         }
       });

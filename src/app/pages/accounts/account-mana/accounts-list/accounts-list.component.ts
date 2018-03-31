@@ -11,7 +11,7 @@ import {AccountService} from '../../../../service/account.service';
 })
 export class AccountsListComponent implements OnInit {
 
-  public data =  [];
+  data =  [];
 
   constructor(private accountService: AccountService) { }
 
