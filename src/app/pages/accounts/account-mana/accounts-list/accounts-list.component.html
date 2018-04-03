@@ -11,7 +11,6 @@
       <nz-table #basicTable [nzData]="data">
         <thead>
         <tr>
-          <th>id</th>
           <th>用户名称</th>
           <th>加入日期</th>
           <th>上次登录IP</th>
@@ -23,7 +22,6 @@
         </thead>
         <tbody>
         <tr *ngFor="let data of basicTable.data">
-          <td>{{data.id}}</td>
           <td>{{data.username}}</td>
           <td>{{data.joindate ? (data.joindate | date:'yyyy-MM-dd HH:mm:ss') : ''}}</td>
           <td>{{data.last_ip}}</td>
@@ -31,7 +29,10 @@
           <td>{{data.locale === 4 ? '简体中文' : '其他'}}</td>
           <td>{{data.os}}</td>
           <td>
-            <button nzSize="small" nz-button nzGhost="true" nzType="primary">编辑</button>
+            <button nzSize="small" nz-button nzGhost="true" (click) = "changePassWord(data.id)"  nzType="primary">修改密码</button>
+            <nz-popconfirm [nzTitle]="'你确定要删除吗?'" (nzOnConfirm)="confirm(data.id)" [nzPlacement]="'top'">
+              <button nzSize="small" class="ml10" nz-popconfirm nz-button nzType="danger">删除</button>
+            </nz-popconfirm>
           </td>
         </tr>
         </tbody>

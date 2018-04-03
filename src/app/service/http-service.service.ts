@@ -7,7 +7,7 @@ export class HttpServiceService {
   constructor(private httpClient: HttpClient,
               private nzModalService: NzModalService) { }
 
-  postJson (url, params, errHandler) {
+  postJson (url, params, errHandler?) {
     const _that = this;
     // 参数自带header
     const header = {};
@@ -50,7 +50,7 @@ export class HttpServiceService {
           reject('内部接口错误');
         } else {
           _that.nzModalService.error({
-            nzTitle: error.header.message
+            nzTitle: error.header ? error.header.message : '内部接口错误'
           });
           reject('内部接口错误');
         }

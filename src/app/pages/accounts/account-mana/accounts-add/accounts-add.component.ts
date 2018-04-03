@@ -31,8 +31,10 @@ export class AccountsAddComponent implements OnInit {
   submitForm(): void {
     const _that = this;
     for (const i in this.validateForm.controls) {
-      this.validateForm.controls[i].markAsDirty();
-      this.validateForm.controls[i].updateValueAndValidity();
+      if (this.validateForm.controls[i]) {
+        this.validateForm.controls[i].markAsDirty();
+        this.validateForm.controls[i].updateValueAndValidity();
+      }
     }
     // console.log(this.validateForm);
     if (this.validateForm.valid) {
@@ -44,7 +46,6 @@ export class AccountsAddComponent implements OnInit {
         if (body && body.status === 'OK') {
           _that.nzMessageService.success('添加成功！');
           _that.router.navigate(['/accounts/account-mana/accounts-list']);
-
         }
       });
     }
@@ -71,7 +72,7 @@ export class AccountsAddComponent implements OnInit {
     } else if (control.value !== this.validateForm.controls.password.value) {
       return {confirm: true, error: true};
     }
-  };
+  }
 
   getCaptcha(e: MouseEvent): void {
     e.preventDefault();

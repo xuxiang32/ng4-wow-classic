@@ -14,6 +14,7 @@ import {BaseLeftComponent} from './modules/base-left/base-left.component';
 import {BaseFooterComponent} from './modules/base-footer/base-footer.component';
 import { AccountsListComponent } from './pages/accounts/account-mana/accounts-list/accounts-list.component';
 import { AccountsAddComponent } from './pages/accounts/account-mana/accounts-add/accounts-add.component';
+import {AccountChangpwdComponent} from './pages/accounts/account-mana/account-changpwd/account-changpwd.component';
 // 服务
 import {HttpServiceService} from './service/http-service.service';
 
@@ -26,6 +27,7 @@ import {HttpServiceService} from './service/http-service.service';
     BaseFooterComponent,
     AccountsListComponent,
     AccountsAddComponent,
+    AccountChangpwdComponent
   ],
   imports: [
     BrowserModule,
