@@ -14,7 +14,6 @@ import {AccountService} from '../../../../service/account.service';
 })
 export class AccountChangpwdComponent implements OnInit {
   validateForm: FormGroup;
-  usrname: string;
 
   constructor(private fb: FormBuilder,
               private as: AccountService,
